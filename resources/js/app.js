@@ -1,6 +1,6 @@
 /**
  *
- * Adding some extra helpers to browser globals
+ * Appending extra helpers to browser globals
  *
  */
 
@@ -32,8 +32,29 @@ document.readCookie = function(name) {
 };
 
 document.eraseCookie = function(name) {
-    createCookie(name,"",-1);
+    document.createCookie(name,"",-1);
 };
+
+/**
+ *
+ * Our global app functions are in the app namespace
+ *
+ */
+var app = {};
+
+app.validateClient = function (client_id, redirect_uri) {
+
+    for (var i in OIDCclients) {
+
+        var client = OIDCclients[i];
+        if (client.clientID == client_id) {
+            return ($.inArray(redirect_uri, client.redirectURIs) != -1);
+        }
+    }
+
+    return false;
+};
+
 
 /**
  *
@@ -43,12 +64,33 @@ document.eraseCookie = function(name) {
 
 $(function () {
 
+    // get some URL parameters and persist them via cookies
     var redirect_uri = location.getURLParameter("redirect_uri");
     var client_id = location.getURLParameter("client_id");
 
     if (redirect_uri != "null") document.createCookie("redirect_uri",redirect_uri,1);
     if (client_id != "null") document.createCookie("client_id",client_id,1);
 
-    alert(document.readCookie("client_id"));
+    // before we render the page let's validate our client and redirect uri
+    if (app.validateClient(document.readCookie("client_id"),document.readCookie("redirect_uri"))) {
+
+        // build some buttons
+        var button_tmpl = _.template($('#tmpl-button').html());
+
+        $.each(OIDCproviders, function (key, button) {
+
+            // build a button and append it
+            var $buttonEl = $(button_tmpl(button)).appendTo('#button-container');
+
+            // bind a click event
+            $("a", $buttonEl).click(function () {
+                // Account Chooser Sends the End-User back to the Client
+                document.location.href = document.readCookie("redirect_uri") + '?issuer=' + encodeURI(button.issuer);
+            });
+
+        });
+    } else {
+        $("#content").html($("#tmpl-error-client").html());
+    }
 
 });

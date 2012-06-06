@@ -60,31 +60,11 @@
 
 <div class="container">
 
-    <div class="row">
+    <div class="row" id="content">
         <!-- Example row of columns -->
         <div class="well span10 offset1">
-            <div class="span10">
+            <div class="span10" id="button-container">
                 <h2 class="well-small">Sign in</h2>
-
-                <div class="span3"><a class="btn btn-large btn-primary" href="#"><i class="icon-user icon-white"></i>
-                    Sign in with MITREid</a>
-
-                    <p class="well-small">(<a href="#">learn more</a>)</p></div>
-
-
-                <div class="span3"><a class="btn btn-large btn-primary" href="#"><i class="icon-user icon-white"></i>
-                    Sign in with MPA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                </a>
-
-                    <p class="well-small">(<a href="#">learn more</a>)</p></div>
-
-
-                <div class="span3"><a class="btn btn-large btn-primary" href="#"><i class="icon-user icon-white"></i>
-                    Sign in with CAC&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                </a>
-
-                    <p class="well-small">(<a href="#">learn more</a>)</p></div>
-
 
             </div>
 
@@ -103,9 +83,23 @@
 <script type="text/javascript" src="resources/js/jquery.min.js"></script>
 <script type="text/javascript" src="resources/bootstrap2/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="resources/js/underscore-min.js"></script>
-<script type="text/javascript" src="resources/js/backbone-min.js"></script>
-<script type="text/javascript" src="resources/js/backbone.validations.js"></script>
 <script type="text/javascript" src="resources/js/app.js"></script>
+<script type="text/javascript" src="resources/js/config.js"></script>
+
+<script type="text/html" id="tmpl-button">
+    <div class="span3"><a class="btn btn-large btn-primary"><i class="icon-user icon-white"></i>
+        Sign in with <%=descriptor%></a>
+
+        <p class="well-small">(<a href="#">learn more</a>)</p></div>
+</script>
+
+<script type="text/html" id="tmpl-error-client">
+    <div class="alert alert-error span12">
+        <strong>Well, this is awkward. </strong> The client id and/or redirect URI is not supported at this time.
+    </div>
+</script>
+
+
 
 </body>
 </html>
