@@ -1,0 +1,10 @@
+[
+    {
+        "clientID" : "123",
+        "redirectURIs" : ["foo:bar","http://google.com/"]
+    },
+    {
+        "clientID" : "456",
+        "redirectURIs" : ["foo:bar","http://google.com/"]
+    }
+]

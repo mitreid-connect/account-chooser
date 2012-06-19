@@ -41,6 +41,8 @@ document.eraseCookie = function(name) {
  *
  */
 var app = {};
+var OIDCclients = [];
+var OIDCproviders = [];
 
 app.validateClient = function (client_id, redirect_uri) {
 
@@ -63,6 +65,20 @@ app.validateClient = function (client_id, redirect_uri) {
  */
 
 $(function () {
+
+    /**
+     * Load Config
+     */
+
+    jQuery.ajaxSetup({async:false});
+
+    $.getJSON('api/clients.json', function (data) {
+        OIDCclients = data;
+    });
+
+    $.getJSON('api/providers.json', function (data) {
+        OIDCproviders = data;
+    });
 
     // get some URL parameters and persist them via cookies
     var redirect_uri = location.getURLParameter("redirect_uri");
