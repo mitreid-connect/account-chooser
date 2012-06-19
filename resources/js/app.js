@@ -81,7 +81,7 @@ $(function () {
     });
 
     // get some URL parameters and persist them via cookies
-    var redirect_uri = location.getURLParameter("redirect_uri");
+    var redirect_uri = decodeURIComponent(location.getURLParameter("redirect_uri"));
     var client_id = location.getURLParameter("client_id");
 
     if (redirect_uri != "null") document.createCookie("redirect_uri",redirect_uri,1);
