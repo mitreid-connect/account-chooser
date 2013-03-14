@@ -43,7 +43,7 @@ $(function () {
     $.each(OIDCproviders, function (key, button) {
 
         // build a button and append it
-        var $buttonEl = $(button_tmpl(button)).appendTo('#button-container');
+        var $buttonEl = $(button_tmpl({button: button, last_issuer: last_issuer})).appendTo('#button-container');
 
         // bind a click event
         $("a", $buttonEl).click(function () {

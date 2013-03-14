@@ -87,13 +87,13 @@
 
 <script type="text/html" id="tmpl-button">
     <div class="span3">
-		<a class="btn btn-large btn-primary">
-			<% if (image) { %>
-			<div><img src="<%=image%>"></div>
+		<a class="btn btn-large<%= (last_issuer == button.issuer) ? " btn-primary" : ""%>">
+			<% if (button.image) { %>
+			<div><img src="<%=button.image%>"></div>
 			<% } %>
 			<div>
 				<i class="icon-user icon-white"></i>
-    	    	Sign in with <%=descriptor%>
+    	    	Sign in with <%=button.descriptor%>
 			</div>
 		</a>
 
