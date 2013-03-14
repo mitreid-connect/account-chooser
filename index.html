@@ -1,13 +1,10 @@
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 
 
     <meta charset="utf-8">
-    <title>OpenID Connect - welcome</title>
+    <title>OpenID Connect Account Chooser</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -53,7 +50,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </a>
-            <a class="brand" href="#">MITRE Partnership Network</a>
+            <a class="brand" href="#">OpenID Connect Account Chooser</a>
         </div>
     </div>
 </div>
@@ -81,21 +78,36 @@
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script type="text/javascript" src="resources/js/jquery.min.js"></script>
+<script type="text/javascript" src="resources/js/jquery.cookie.js"></script>
+<script type="text/javascript" src="resources/js/jquery.query.js"></script>
+<script type="text/javascript" src="resources/js/purl.js"></script>
 <script type="text/javascript" src="resources/bootstrap2/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="resources/js/underscore-min.js"></script>
 <script type="text/javascript" src="resources/js/app.js"></script>
 
 <script type="text/html" id="tmpl-button">
-    <div class="span3"><a class="btn btn-large btn-primary"><i class="icon-user icon-white"></i>
-        Sign in with <%=descriptor%></a>
+    <div class="span3">
+		<a class="btn btn-large btn-primary">
+			<% if (image) { %>
+			<div><img src="<%=image%>"></div>
+			<% } %>
+			<div>
+				<i class="icon-user icon-white"></i>
+    	    	Sign in with <%=descriptor%>
+			</div>
+		</a>
 
         <p class="well-small">(<a href="#">learn more</a>)</p></div>
 </script>
 
 <script type="text/html" id="tmpl-error-client">
     <div class="alert alert-error span12">
-        <strong>Well, this is awkward. </strong> The client id and/or redirect URI is not supported at this time.
+        <strong>Warning.</strong> The redirect URI given has not been registered with this Account Chooser, proceed carefully.
     </div>
+
+	<div>
+		Click to return to the your application: <a href="<%=redirectUrl%>"><%=redirectUrl%></a>
+	</div>
 </script>
 
 
