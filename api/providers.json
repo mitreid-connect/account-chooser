@@ -1,17 +1,17 @@
 [
     {
-        "issuer":"http://id.provider.org/",
-        "image":"http://",
-        "descriptor":"MITREid"
+        "issuer":"http://idp.example.org/openid-connect-server/",
+        "image":"http://idp.example.org/provider.jpg",
+        "descriptor":"Example Provider"
     },
     {
-        "issuer":"http://id.provider.org/",
-        "image":"http://",
-        "descriptor":"MPA"
+        "issuer":"http://another.example.org/openid-connect-server/",
+        "image":"http://another.example.org/another.jpg",
+        "descriptor":"Another Provider"
     },
     {
-        "issuer":"http://id.provider.org/",
-        "image":"http://",
-        "descriptor":"CAC"
+        "issuer":"http://3.example.org/openid-connect-server/",
+        "image":"http://3.example.org/3.jpg",
+        "descriptor":"Third Provider"
     }
 ]

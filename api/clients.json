@@ -1,10 +1,3 @@
 [
-    {
-        "clientID" : "123",
-        "redirectURIs" : ["foo:bar","http://google.com/"]
-    },
-    {
-        "clientID" : "456",
-        "redirectURIs" : ["foo:bar","http://google.com/"]
-    }
+    "myapp://oauth_return", "http://client.example.com/client"
 ]
